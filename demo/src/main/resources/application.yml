@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/banco
+    username: postgres
+    password: senha
+  jpa:
+    hibernate:
+      ddl-auto: update
