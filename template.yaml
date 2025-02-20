@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  TransacaoLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: TransacaoLambda
+      Handler: com.example.demo.lambda.TransacaoLambda::handleRequest
+      Runtime: java17
+      MemorySize: 512
+      Timeout: 30
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - SQSPollerPolicy:
+            QueueName: minha-fila.fifo
+      Environment:
+        Variables:
+          SQS_QUEUE_URL: !Ref TransacaoQueue
+      Events:
+        SQSEvent:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt TransacaoQueue.Arn
+            BatchSize: 5
+
+  TransacaoQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: minha-fila.fifo
+      FifoQueue: true
+      ContentBasedDeduplication: true
+
+Outputs:
+  TransacaoLambdaArn:
+    Description: "ARN da função Lambda"
+    Value: !GetAtt TransacaoLambda.Arn
