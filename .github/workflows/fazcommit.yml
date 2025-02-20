@@ -25,4 +25,4 @@ jobs:
         run: |
           git add .
           git commit -m "Atualização automática pelo GitHub Actions" || echo "Nenhuma mudança para commit"
-          git push
+          git push https://github-actions:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
