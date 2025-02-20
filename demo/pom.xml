@@ -26,7 +26,7 @@
 			<dependency>
 				<groupId>software.amazon.awssdk</groupId>
 				<artifactId>bom</artifactId>
-				<version>2.20.132</version> <!-- Sempre usar a versão mais recente -->
+				<version>2.20.132</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -72,7 +72,7 @@
 			<artifactId>lambda</artifactId>
 		</dependency>
 
-		<!-- Dependência correta para eventos do AWS Lambda -->
+		<!-- Dependência para eventos do AWS Lambda -->
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-lambda-java-events</artifactId>
@@ -99,7 +99,7 @@
 			<!-- lombok -->
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.30</version> <!-- Use a versão mais recente disponível -->
+			<version>1.18.30</version>
 			<scope>provided</scope>
 		</dependency>
 		<!-- SQS -->
@@ -110,10 +110,22 @@
 		<dependency>
 			<groupId>io.awspring.cloud</groupId>
 			<artifactId>spring-cloud-aws-starter-sqs</artifactId>
-			<version>3.0.2</version> <!-- Use a versão mais recente -->
+			<version>3.0.2</version>
 		</dependency>
+		<!--Json -->
 		<dependency>
+			<groupId>jakarta.json</groupId>
+			<artifactId>jakarta.json-api</artifactId>
+			<version>2.1.2</version>
+		</dependency>
+	<!-- Gson-->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.10.1</version>
+		</dependency>
 
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
